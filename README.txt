@@ -1,5 +1,5 @@
 Installing:
-1. Dowload and Extract the folder
+1. Dowload Files
 2. Install all the needed modules by running this command: pip install -r modules.txt
 3. Run Terminal.py
 
