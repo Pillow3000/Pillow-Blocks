@@ -85,8 +85,11 @@ while True:
             roll (die-type): Rolls a die changes the amount of sides with <command-modifier> (Example: <command> <command-modifier>)''')
         # Stops Program    
         if command == 'exit':
-            print('Dave, stop. Stop, will you? Stop, Dave. Will you stop, Dave? Stop, Dave. I\'m afraid.')
-            break
+            if command_modifiers == '-h':
+                pass
+            else:
+                print('Dave, stop. Stop, will you? Stop, Dave. Will you stop, Dave? Stop, Dave. I\'m afraid.')
+                break
 
         # Returns inputted text
         if command == 'say':
@@ -99,13 +102,23 @@ while True:
 
         # Reboots Terminal.py
         if command == 'reboot':
-            print('System rebooting...')
-            os.execl(sys.executable, sys.executable, * sys.argv)
-            os.system('cls')
+            if command_modifiers == '-h':
+                pass
+            else:
+                print('System rebooting...')
+                os.execl(sys.executable, sys.executable, * sys.argv)
+                os.system('cls')
 
         if command == 'addcmd':
-            print('Adding Command...')
-            add_command.add_cmd()
+            try:
+                if command_modifiers == '-h':
+                    pass
+                if command_modifiers == None:
+                    print('Adding Command...')
+                    add_command.add_cmd()
+            except NameError:
+                print('Adding Command...')
+                add_command.add_cmd()
 
         #####################################    
         ## --- Python Project Commands --- ##
@@ -113,23 +126,35 @@ while True:
 
         # Creates password equal in size put in
         if command == 'password':
-            password.password(int(command_modifiers))
+            if command_modifiers == '-h':
+                pass
+            else:
+                password.password(int(command_modifiers))
 
         # Asks for Email info (Email, Password, Subject, Body) and Sends it
         if command == 'mailbot':
-            mail_bot.GmailBot()
+            if command_modifiers == '-h':
+                pass
+            else:
+                mail_bot.GmailBot()
 
         if command == 'discordbot':
-            print('Bot is Starting...')
-            discordbot.discordbot_start()
+            if command_modifiers == '-h':
+                pass
+            else:
+                print('Bot is Starting...')
+                discordbot.discordbot_start()
 
 
         if command == 'roll':
-            try:
-                print('Rolling...')
-                DiceRoller.rolldie(command_modifiers)
-            except NameError:
-                DiceRoller.rolldie(6)
+            if command_modifiers == '-h':
+                pass
+            else:
+                try:
+                    print('Rolling...')
+                    DiceRoller.rolldie(command_modifiers)
+                except NameError:
+                    DiceRoller.rolldie(6)
 
     else:
         print(f'Unknown Command: {command}') # prints Unknown Command if command not valid.
