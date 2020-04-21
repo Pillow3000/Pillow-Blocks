@@ -85,29 +85,49 @@ while True:
             roll (die-type): Rolls a die changes the amount of sides with <command-modifier> (Example: <command> <command-modifier>)''')
         # Stops Program    
         if command == 'exit':
+			
             if command_modifiers == '-h':
                 pass
             else:
-                print('Dave, stop. Stop, will you? Stop, Dave. Will you stop, Dave? Stop, Dave. I\'m afraid.')
-                break
+				try:
+					print('Dave, stop. Stop, will you? Stop, Dave. Will you stop, Dave? Stop, Dave. I\'m afraid.')
+					break
+				except NameError:
+					print('Dave, stop. Stop, will you? Stop, Dave. Will you stop, Dave? Stop, Dave. I\'m afraid.')
+					break
 
         # Returns inputted text
         if command == 'say':
-            if command_modifiers == '-h':
-                pass
-            elif command_modifiers == 'hello':
-                print('Hello David')
-            else:
-                print(command_modifiers)
+            try:
+                if command_modifiers == '-h':
+                    pass
+                elif command_modifiers == 'hello':
+                    print('Hello David')
+                else:
+                    print(command_modifiers)
+			except NameError:
+				if command_modifiers == '-h':
+                    pass
+                elif command_modifiers == 'hello':
+                    print('Hello David')
+                else:
+                    print(command_modifiers)
 
         # Reboots Terminal.py
-        if command == 'reboot':
-            if command_modifiers == '-h':
-                pass
-            else:
-                print('System rebooting...')
-                os.execl(sys.executable, sys.executable, * sys.argv)
-                os.system('cls')
+		try:
+			if command == 'reboot':
+				if command_modifiers == '-h':
+					pass
+				else:
+					try:
+						print('System rebooting...')
+						os.execl(sys.executable, sys.executable, * sys.argv)
+						os.system('cls')
+					except NameError:
+						print('System rebooting...')
+						os.execl(sys.executable, sys.executable, * sys.argv)
+						os.system('cls')
+					
 
         if command == 'addcmd':
             try:
@@ -129,22 +149,32 @@ while True:
             if command_modifiers == '-h':
                 pass
             else:
-                password.password(int(command_modifiers))
+				try:
+                	password.password(int(command_modifiers))
+				except NameError:
+					print('No amount was specified defaulting to 7')
+					password.password(7)
 
         # Asks for Email info (Email, Password, Subject, Body) and Sends it
         if command == 'mailbot':
             if command_modifiers == '-h':
                 pass
             else:
-                mail_bot.GmailBot()
+				try:
+                	mail_bot.GmailBot()
+				except NameError:
+					mail_bot.GmailBot()
 
         if command == 'discordbot':
             if command_modifiers == '-h':
                 pass
             else:
-                print('Bot is Starting...')
-                discordbot.discordbot_start()
-
+				try:
+					print('Bot is Starting...')
+					discordbot.discordbot_start()
+				except NameError:
+					print('Bot is Starting...')
+					discordbot.discordbot_start()
 
         if command == 'roll':
             if command_modifiers == '-h':
